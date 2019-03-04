@@ -1,0 +1,7 @@
+FROM multiarch/ubuntu-debootstrap:arm64-bionic
+
+RUN uname -a
+RUN apt-get update && \
+  apt-get install -y ca-certificates-java
+
+CMD bash

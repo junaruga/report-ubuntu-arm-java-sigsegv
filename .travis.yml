@@ -1,0 +1,8 @@
+dist: xenial
+language: bash
+services: docker
+install:
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  - docker build --rm -t sample -f Dockerfile-arm64 .
+script:
+  - docker run --rm -t sample java -version
