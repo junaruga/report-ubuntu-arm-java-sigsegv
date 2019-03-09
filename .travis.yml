@@ -2,7 +2,7 @@ dist: xenial
 language: bash
 services: docker
 install:
-  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-  - docker build --rm -t sample -f Dockerfile-arm64 .
+  - docker run --rm --privileged --cpuset-cpus="0" multiarch/qemu-user-static:register --reset
+  - docker build --rm -t sample -f Dockerfile-arm64 --cpuset-cpus="0" .
 script:
-  - docker run --rm -t sample java -version
+  - docker run --rm -t --cpuset-cpus="0" sample java -version
