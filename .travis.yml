@@ -3,6 +3,7 @@ language: bash
 services: docker
 install:
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  - docker run --rm -t multiarch/ubuntu-debootstrap:arm64-bionic /usr/bin/qemu-aarch64-static --version
   - docker build --rm -t sample -f Dockerfile-arm64 .
 script:
   - docker run --rm -t sample java -version
